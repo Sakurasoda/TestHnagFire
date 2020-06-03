@@ -26,6 +26,8 @@ namespace WebApplication
                 configuration.UseMemoryStorage();
                 configuration.UseConsole();
             });
+            
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +56,8 @@ namespace WebApplication
                                      {
                                          Authorization = new[] { new MyAuthorizationFilter() }
                                      });
+            
+            app.UseSession();
         }
     }
     public class MyAuthorizationFilter : IDashboardAuthorizationFilter
